@@ -1,3 +1,109 @@
 body {
+  font-size: 16px;
+  background: #f9f7fe;
+  padding: 0 12px;
+}
+
+.weatherApp {
+  background-color: #fff;
+  margin: 30px auto;
+  max-width: 800px;
+  padding: 40px;
+  border-radius: 0 30px;
+  box-shadow: 0 30px 50px #41326414;
+}
+
+header {
+  border-bottom: 1px solid #f9f7fe;
+  padding-bottom: 15px;
+}
+
+form {
+  display: flex;
+  justify-content: space-between;
+}
+
+.formInput {
+  background: #f9f7fe;
+  border-radius: 10px 0;
+  padding: 15px 20px;
+  border: none;
+  color: #26204066;
+  width: 70%;
+  font-size: 14px;
+}
+
+.formBtn {
+  color: #fff;
+  background: #885df1;
+  padding: 15px 20px;
+  border-radius: 0 10px;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  width: 24%;
+  transition: all 200ms ease-in-out;
+}
+
+.formBtn:hover {
+  background: #916af5;
+  cursor: pointer;
+}
+
+.current-weather {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 50px;
+}
+
+.detailedInfo-container h1 {
+  font-size: 38px;
+  margin: 0 0 10px;
+}
+
+.detailedInfo-container p {
+  color: #27214266;
+  line-height: 1.5;
+}
+
+.detailedInfo-container p .weatherFeatures {
+  color: #f65282;
+  font-weight: 500;
+}
+
+.currentTemp-container {
+  position: relative;
+  top: 20px;
+}
+
+.tempEmoji {
+  font-size: 40px;
+  margin-right: 10px;
+  position: relative;
+  top: -15px;
+}
+
+.tempNumber {
+  font-size: 80px;
+  font-weight: 600;
+}
+
+.tempUnit {
+  font-size: 28px;
+  font-weight: 400;
+  position: relative;
+  top: -34px;
+}
+
+footer {
+  font-size: 14px;
+  color: rgba(39, 33, 66, 0.4);
+  border-top: 1px solid #f9f7fe;
+  padding-top: 15px;
   text-align: center;
+  margin: 40px 0 0;
+}
+
+a {
+  color: #885df1;
 }
