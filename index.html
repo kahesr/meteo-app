@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Vannilla Weather App</title>
 	<link rel="stylesheet" href="src/style.css">
+	<script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
 </head>
 
 <body>
@@ -18,7 +19,7 @@
 		</header>
 		<main class="current-weather">
 			<div class="detailedInfo-container">
-				<h1 id="city">Paris</h1>
+				<h1 id="city"></h1>
 				<p>
 					Saturday 18:44, light rain
 					<br>
@@ -27,7 +28,8 @@
 				</p>
 			</div>
 			<div class="currentTemp-container">
-				<span class="tempEmoji">🌦️</span><span class="tempNumber">9</span><span class="tempUnit">°C</span>
+				<span class="tempEmoji">🌦️</span><span class="tempNumber" id="current-temp"></span><span
+					class="tempUnit">°C</span>
 			</div>
 		</main>
 
