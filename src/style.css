@@ -104,15 +104,17 @@ form {
 
 .forcast {
   display: flex;
-  justify-content: space-between;
-  padding-top: 50px;
+  justify-content: space-evenly;
+  margin: 30px -5px 0;
 }
 
 .day-forcast-container {
   text-align: center;
   border: 1px solid #f9f7fe;
   border-radius: 10px;
-  padding: 15px;
+  padding: 10px;
+  width: 20%;
+  margin: 0 5px;
 }
 
 .forcast .day {
@@ -126,6 +128,8 @@ form {
 
 .forcast .temps {
   color: rgba(39, 33, 66, 0.567);
+  display: flex;
+  justify-content: center;
 }
 
 .forcast .temp {
