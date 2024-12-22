@@ -1,21 +1,25 @@
 body {
   font-size: 16px;
   background: #f9f7fe;
-  padding: 0 12px;
+  margin: 10px;
 }
 
 .weatherApp {
   background-color: #fff;
   margin: 30px auto;
   max-width: 600px;
-  padding: 40px;
-  border-radius: 0 30px;
+  padding: 30px;
+  border-radius: 0 30px 30px;
   box-shadow: 0 30px 50px #41326414;
 }
 
 header {
   border-bottom: 1px solid #f9f7fe;
-  padding-bottom: 15px;
+  padding-bottom: 30px;
+}
+
+main {
+  padding: 30px 0;
 }
 
 form {
@@ -25,7 +29,7 @@ form {
 
 .formInput {
   background: #f9f7fe;
-  border-radius: 10px 0;
+  border-radius: 0 10px;
   padding: 15px 20px;
   margin-right: 10px;
   border: none;
@@ -38,7 +42,7 @@ form {
   color: #fff;
   background: #885df1;
   padding: 15px 20px;
-  border-radius: 0 10px;
+  border-radius: 10px 10px 10px 0;
   border: none;
   font-size: 14px;
   font-weight: 500;
@@ -54,7 +58,6 @@ form {
 .current-weather {
   display: flex;
   justify-content: space-between;
-  padding-top: 50px;
 }
 
 .detailedInfo-container h1 {
@@ -101,28 +104,28 @@ form {
 
 .forcast {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   padding-top: 50px;
 }
 
 .day-forcast-container {
   text-align: center;
+  border: 1px solid #f9f7fe;
+  border-radius: 10px;
+  padding: 15px;
 }
 
 .forcast .day {
-  color: rgba(39, 33, 66, 0.4);
   font-size: 16px;
   line-height: 20px;
 }
 
-.forcast .icon {
-  text-align: center;
+.forcast .today {
+  background-color: rgba(39, 33, 66, 0.097);
 }
 
 .forcast .temps {
-  display: flex;
-  justify-content: space-between;
-  color: #f65282;
+  color: rgba(39, 33, 66, 0.567);
 }
 
 .forcast .temp {
@@ -131,19 +134,15 @@ form {
 
 .forcast .highestTemp {
   font-weight: 600;
-}
-
-.forcastDetail {
-  padding: 10px 0;
+  border-right: 1px solid #f9f7fe;
 }
 
 footer {
   font-size: 14px;
   color: rgba(39, 33, 66, 0.4);
   border-top: 1px solid #f9f7fe;
-  padding-top: 15px;
+  padding-top: 30px;
   text-align: center;
-  margin: 40px 0 0;
 }
 
 a {
