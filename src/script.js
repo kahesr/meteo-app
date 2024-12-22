@@ -18,29 +18,38 @@ function displayCurrentTemp(response) {
   getForcast(response.data.city);
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[date.getDay()];
+}
+
 function displayForcast(response) {
-  let array = ["1", "2", "3", "4", "5"]; //array of day indexes
   let forcast = document.querySelector("#forcast");
   let dailyForcast = response.data.daily; //array of 7 days
   forcast.innerHTML = "";
+  console.log(dailyForcast);
 
-  array.forEach(function (dayIndex) {
-    let highTemp = Math.round(dailyForcast[dayIndex].temperature.maximum);
-    let lowTemp = Math.round(dailyForcast[dayIndex].temperature.minimum);
-    let iconUrl = dailyForcast[dayIndex].condition.icon_url;
-    let icon = `<img src=${iconUrl} alt="" class="icon">`;
-    let date = new Date(dailyForcast[dayIndex].time * 1000);
-    let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-    let day = days[date.getDay()];
+  dailyForcast.forEach(function (weekDay, index) {
+    if (index < 5) {
+      let highTemp = Math.round(weekDay.temperature.maximum);
+      let lowTemp = Math.round(weekDay.temperature.minimum);
+      let icon = `<img src=${weekDay.condition.icon_url} alt="" class="icon">`;
+      let day = formatDay(weekDay.time);
 
-    forcast.innerHTML += `<div class="day-forcast-container">
-    <div class="day forcastDetail">${day}</div>
-    <div class="forcastDetail">${icon}</div>
-    <div class="temps forcastDetail">
+      // Add the "today" class to the first container
+      let todayClass = index === 0 ? " today" : "";
+
+      forcast.innerHTML += `<div class="day-forcast-container${todayClass}">
+    <div class="day">${day}</div>
+    <div>${icon}</div>
+    <div class="temps">
     <span class="temp highestTemp">${highTemp}°</span>
     <span class="temp loestTemp">${lowTemp}°</span>
     </div>
     </div>`;
+    }
   });
 }
 
