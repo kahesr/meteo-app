@@ -74,11 +74,14 @@ form {
 
 .currentTemp-container {
   position: relative;
-  top: -20px;
+  top: 5px;
 }
 
-.tempEmoji {
-  width: 40px;
+.icon {
+  width: 80px;
+}
+
+.current-weather .icon {
   margin-right: 10px;
   position: relative;
   top: 20px;
@@ -110,6 +113,10 @@ form {
   color: rgba(39, 33, 66, 0.4);
   font-size: 16px;
   line-height: 20px;
+}
+
+.forcast .icon {
+  text-align: center;
 }
 
 .forcast .temps {
