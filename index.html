@@ -2,47 +2,48 @@
 <html lang="en">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Vannilla Weather App</title>
-	<link rel="stylesheet" href="src/style.css">
-	<script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vannilla Weather App</title>
+  <link rel="stylesheet" href="src/style.css">
+  <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
 </head>
 
 <body>
-	<section class="weatherApp">
-		<header>
-			<form action="#" id="form">
-				<input type="text" placeholder="Enter a city..." required class="formInput" id="form-input">
-				<input type="submit" value="Search" class="formBtn">
-			</form>
-		</header>
-		<main class="current-weather">
-			<div class="detailedInfo-container">
-				<h1 id="city"></h1>
-				<p>
-					<span id="time"></span>, <span id="weather-description"></span>
-					<br>
-					Humidity: <span class="weatherFeatures" id="humidity"></span>, Wind: <span class="weatherFeatures"
-						id="wind"></span>
-				</p>
-			</div>
-			<div class="currentTemp-container">
-				<span class="tempEmoji" id="icon"></span><span class="tempNumber" id="current-temp"></span><span
-					class="tempUnit">°C</span>
-			</div>
-		</main>
-
-
-		<footer>
-			This project was coded by
-			<a href="https://github.com/kahesr" target="_blank">Sarah</a>
-			, is open-sourced on
-			<a href="https://github.com/kahesr/meteo-app" target="_blank">GitHub</a>
-			and hosted on <a href="https://shecodesmeteoapp.netlify.app/" target="_blank">Netlify</a>
-		</footer>
-	</section>
-	<script src="src/script.js"></script>
+  <section class="weatherApp">
+    <header>
+      <form action="#" id="form">
+        <input type="text" placeholder="Enter a city..." required class="formInput" id="form-input">
+        <input type="submit" value="Search" class="formBtn">
+      </form>
+    </header>
+    <main>
+      <div class="current-weather">
+        <div class="detailedInfo-container">
+          <h1 id="city"></h1>
+          <p>
+            <span id="time"></span>, <span id="weather-description"></span>
+            <br>
+            Humidity: <span class="weatherFeatures" id="humidity"></span>, Wind: <span class="weatherFeatures"
+              id="wind"></span>
+          </p>
+        </div>
+        <div class="currentTemp-container">
+          <span class="tempEmoji" id="icon"></span><span class="tempNumber" id="current-temp"></span><span
+            class="tempUnit">°C</span>
+        </div>
+      </div>
+      <div class="forcast" id="forcast"></div>
+    </main>
+    <footer>
+      This project was coded by
+      <a href="https://github.com/kahesr" target="_blank">Sarah</a>
+      , is open-sourced on
+      <a href="https://github.com/kahesr/meteo-app" target="_blank">GitHub</a>
+      and hosted on <a href="https://shecodesmeteoapp.netlify.app/" target="_blank">Netlify</a>
+    </footer>
+  </section>
+  <script src="src/script.js"></script>
 </body>
 
 </html>
