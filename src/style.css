@@ -71,8 +71,8 @@ form {
 }
 
 .detailedInfo-container p .weatherFeatures {
-  color: #f65282;
-  font-weight: 500;
+  color: rgba(39, 33, 66, 0.567);
+  font-weight: 600;
 }
 
 .currentTemp-container {
@@ -96,10 +96,23 @@ form {
 }
 
 .tempUnit {
-  font-size: 28px;
+  font-size: 20px;
   font-weight: 400;
   position: relative;
   top: -34px;
+}
+
+a.unit {
+  text-decoration: none;
+  color: #27214266;
+}
+
+a.selectedUnit {
+  color: #000;
+}
+
+.separator {
+  color: #f9f7fe;
 }
 
 .forcast {

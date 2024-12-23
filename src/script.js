@@ -6,11 +6,12 @@ function displayCurrentTemp(response) {
   let weatherCondition = response.data.condition.description;
   let iconImage = `<img src=${response.data.condition.icon_url} alt="" class="icon">`;
   let date = new Date(response.data.time * 1000);
+  let windUnit = currentUnit === "metric" ? " km/h" : " mph";
 
   document.querySelector("#city").innerHTML = city;
   document.querySelector("#current-temp").innerHTML = Math.round(temperature);
   document.querySelector("#humidity").innerHTML = `${humidity}%`;
-  document.querySelector("#wind").innerHTML = `${wind}km/h`;
+  document.querySelector("#wind").innerHTML = `${Math.round(wind)}${windUnit}`;
   document.querySelector("#weather-description").innerHTML = weatherCondition;
   document.querySelector("#icon").innerHTML = iconImage;
   document.querySelector("#time").innerHTML = formatDate(date);
@@ -29,7 +30,6 @@ function displayForcast(response) {
   let forcast = document.querySelector("#forcast");
   let dailyForcast = response.data.daily; //array of 7 days
   forcast.innerHTML = "";
-  console.log(dailyForcast);
 
   dailyForcast.forEach(function (weekDay, index) {
     if (index < 5) {
@@ -80,24 +80,47 @@ function formatDate(date) {
 
 function getForcast(city) {
   let apiKey = "taf74bb8e045996263fo9880fc8a042e";
-  let forcastApi = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
-  axios.get(forcastApi).then(displayForcast);
+  let apiBase = "https://api.shecodes.io/weather/v1/forecast";
+  let forcastApiUrl = `${apiBase}?query=${city}&key=${apiKey}&units=${currentUnit}`;
+  axios.get(forcastApiUrl).then(displayForcast);
 }
 
 function searchCity(city) {
   let apiKey = "taf74bb8e045996263fo9880fc8a042e";
-  let api = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
-  axios.get(api).then(displayCurrentTemp);
+  let apiBase = "https://api.shecodes.io/weather/v1/current";
+  let apiUrl = `${apiBase}?query=${city}&key=${apiKey}&units=${currentUnit}`;
+  axios.get(apiUrl).then(displayCurrentTemp);
 }
 
 function handleSearchSubmit(event) {
   event.preventDefault();
   let formInput = document.querySelector("#form-input");
-  searchCity(formInput.value);
+  currentCity = formInput.value;
+  searchCity(currentCity);
 }
 
-//////////////////////////////////////////
-let form = document.querySelector("#form");
-form.addEventListener("submit", handleSearchSubmit);
+function switchUnit(unit) {
+  currentUnit = unit;
+  if (unit === "metric") {
+    celsiusButton.classList.add("selectedUnit");
+    fahrenheitButton.classList.remove("selectedUnit");
+  } else {
+    celsiusButton.classList.remove("selectedUnit");
+    fahrenheitButton.classList.add("selectedUnit");
+  }
 
-searchCity("Paris");
+  searchCity(currentCity);
+}
+//////////////////////////////////////////
+let currentUnit = "metric";
+let currentCity = "Paris";
+let celsiusButton = document.querySelector("#celsius");
+let fahrenheitButton = document.querySelector("#fahrenheit");
+let form = document.querySelector("#form");
+
+searchCity(currentCity);
+
+celsiusButton.addEventListener("click", () => switchUnit("metric"));
+fahrenheitButton.addEventListener("click", () => switchUnit("imperial"));
+
+form.addEventListener("submit", handleSearchSubmit);
