@@ -1,5 +1,6 @@
 body {
-  font-size: 16px;
+  font-family: "Roboto", serif;
+  font-size: 14px;
   background: #f9f7fe;
   margin: 10px;
 }
@@ -24,7 +25,6 @@ main {
 
 form {
   display: flex;
-  justify-content: space-between;
 }
 
 .formInput {
@@ -41,7 +41,7 @@ form {
 .formBtn {
   color: #fff;
   background: #885df1;
-  padding: 15px 20px;
+  padding: 10px;
   border-radius: 10px 10px 10px 0;
   border: none;
   font-size: 14px;
@@ -76,8 +76,24 @@ form {
 }
 
 .currentTemp-container {
+  display: flex;
+  justify-content: space-between;
   position: relative;
   top: 5px;
+  gap: 8px;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .detailedInfo-container {
+    max-width: 40%;
+  }
+
+  .currentTemp-container {
+    width: 60%;
+    flex-direction: column;
+    align-items: end;
+  }
 }
 
 .icon {
@@ -87,7 +103,7 @@ form {
 .current-weather .icon {
   margin-right: 10px;
   position: relative;
-  top: 20px;
+  top: 12px;
 }
 
 .tempNumber {
@@ -99,7 +115,7 @@ form {
   font-size: 20px;
   font-weight: 400;
   position: relative;
-  top: -34px;
+  top: -45px;
 }
 
 a.unit {
@@ -128,6 +144,15 @@ a.selectedUnit {
   padding: 10px;
   width: 20%;
   margin: 0 5px;
+  flex: 1 1 calc(20% - 16px); /* Adjusts each section to take equal space (5 in a row) */
+  max-width: calc(
+    20% - 16px
+  ); /* Ensures each section doesn't exceed the width */
+  box-sizing: border-box; /* Includes padding/border in width */
+}
+
+.forcast .icon {
+  max-width: 100%;
 }
 
 .forcast .day {
@@ -146,7 +171,7 @@ a.selectedUnit {
 }
 
 .forcast .temp {
-  padding: 0 10px;
+  padding: 0 15%;
 }
 
 .forcast .highestTemp {

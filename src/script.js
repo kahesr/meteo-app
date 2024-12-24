@@ -100,7 +100,6 @@ function handleSearchSubmit(event) {
 }
 
 function switchUnit(unit) {
-  currentUnit = unit;
   if (unit === "metric") {
     celsiusButton.classList.add("selectedUnit");
     fahrenheitButton.classList.remove("selectedUnit");
@@ -109,6 +108,7 @@ function switchUnit(unit) {
     fahrenheitButton.classList.add("selectedUnit");
   }
 
+  currentUnit = unit;
   searchCity(currentCity);
 }
 //////////////////////////////////////////
