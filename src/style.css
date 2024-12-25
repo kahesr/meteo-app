@@ -85,6 +85,11 @@ form {
 
 /* Mobile Styles */
 @media (max-width: 768px) {
+  .current-weather {
+    display: flex;
+    justify-content: space-between;
+  }
+
   .detailedInfo-container {
     max-width: 40%;
   }

@@ -66,14 +66,10 @@ function formatDate(date) {
   let day = days[date.getDay()];
 
   let hour = date.getHours();
-  if (hour < 10) {
-    hour = `0${hour}`;
-  }
+  hour = hour.toString().padStart(2, "0"); //hour = hour < 10 ? `0${hour}` : `${hour}`;
 
   let minute = date.getMinutes();
-  if (minute < 10) {
-    minute = `0${minute}`;
-  }
+  minute = minute.toString().padStart(2, "0");
 
   return `${day} ${hour}:${minute}`;
 }
