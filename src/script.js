@@ -16,27 +16,27 @@ function displayCurrentTemp(response) {
   document.querySelector("#weather-description").innerHTML = weatherCondition;
   document.querySelector("#icon").innerHTML = iconImage;
 
-  // GeoTZ.find(latitude, longitude).then(getTimezone);
-  getTimezone(latitude, longitude);
+  GeoTZ.find(latitude, longitude).then(getTimezone);
+  // getTimezone(latitude, longitude);
 
   getForcast(response.data.city);
 }
 
-// function getTimezone(response) {
-//   let timezone = response[0]; //Outputs: Europe / Paris;
-//   let time = moment().tz(timezone).format("dddd h:mm A"); //Outputs: Sunday 1:41 AM
-//   document.querySelector("#time").innerHTML = time;
-// }
-async function getTimezone(latitude, longitude) {
-  try {
-    let result = await GeoTZ.find(latitude, longitude);
-    let timezone = result[0]; //Outputs: Europe / Paris;
-    let time = moment().tz(timezone).format("dddd h:mm A"); //Outputs: Sunday 1:41 AM
-    document.querySelector("#time").innerHTML = time;
-  } catch (error) {
-    console.error("Error fetching timezone:", error);
-  }
+function getTimezone(response) {
+  let timezone = response[0]; //Outputs: Europe / Paris;
+  let time = moment().tz(timezone).format("dddd h:mm A"); //Outputs: Sunday 1:41 AM
+  document.querySelector("#time").innerHTML = time;
 }
+// async function getTimezone(latitude, longitude) {
+//   try {
+//     let result = await GeoTZ.find(latitude, longitude);
+//     let timezone = result[0]; //Outputs: Europe / Paris;
+//     let time = moment().tz(timezone).format("dddd h:mm A"); //Outputs: Sunday 1:41 AM
+//     document.querySelector("#time").innerHTML = time;
+//   } catch (error) {
+//     console.error("Error fetching timezone:", error);
+//   }
+// }
 
 function formatDay(timestamp) {
   let date = new Date(timestamp * 1000);
