@@ -5,7 +5,8 @@ function displayCurrentTemp(response) {
   let wind = response.data.wind.speed;
   let weatherCondition = response.data.condition.description;
   let iconImage = `<img src=${response.data.condition.icon_url} alt="" class="icon">`;
-  let date = new Date(response.data.time * 1000);
+  let latitude = response.data.coordinates.latitude;
+  let longitude = response.data.coordinates.longitude;
   let windUnit = currentUnit === "metric" ? " km/h" : " mph";
 
   document.querySelector("#city").innerHTML = city;
@@ -14,9 +15,27 @@ function displayCurrentTemp(response) {
   document.querySelector("#wind").innerHTML = `${Math.round(wind)}${windUnit}`;
   document.querySelector("#weather-description").innerHTML = weatherCondition;
   document.querySelector("#icon").innerHTML = iconImage;
-  document.querySelector("#time").innerHTML = formatDate(date);
+
+  // GeoTZ.find(latitude, longitude).then(getTimezone);
+  getTimezone(latitude, longitude);
 
   getForcast(response.data.city);
+}
+
+// function getTimezone(response) {
+//   let timezone = response[0]; //Outputs: Europe / Paris;
+//   let time = moment().tz(timezone).format("dddd h:mm A"); //Outputs: Sunday 1:41 AM
+//   document.querySelector("#time").innerHTML = time;
+// }
+async function getTimezone(latitude, longitude) {
+  try {
+    let result = await GeoTZ.find(latitude, longitude);
+    let timezone = result[0]; //Outputs: Europe / Paris;
+    let time = moment().tz(timezone).format("dddd h:mm A"); //Outputs: Sunday 1:41 AM
+    document.querySelector("#time").innerHTML = time;
+  } catch (error) {
+    console.error("Error fetching timezone:", error);
+  }
 }
 
 function formatDay(timestamp) {
@@ -51,27 +70,6 @@ function displayForcast(response) {
     </div>`;
     }
   });
-}
-
-function formatDate(date) {
-  let days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-  let day = days[date.getDay()];
-
-  let hour = date.getHours();
-  hour = hour.toString().padStart(2, "0"); //hour = hour < 10 ? `0${hour}` : `${hour}`;
-
-  let minute = date.getMinutes();
-  minute = minute.toString().padStart(2, "0");
-
-  return `${day} ${hour}:${minute}`;
 }
 
 function getForcast(city) {
